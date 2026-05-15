@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Retro-88 Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="calc-wrap">
+    <div class="calculator">
+
+      <div class="brand">RETRO-88 ▸ CALC</div>
+
+      <div class="screen-housing">
+        <div class="status-bar">
+          <span class="led"></span>
+          <span class="status-text">ON</span>
+        </div>
+        <div class="screen">
+          <div class="screen-expr" id="expr"></div>
+          <div class="screen-main" id="display">0</div>
+        </div>
+      </div>
+
+      <div class="btn-grid">
+        <button class="btn btn-clear" onclick="clearAll()">AC</button>
+        <button class="btn btn-clear" onclick="toggleSign()">+/-</button>
+        <button class="btn btn-op"    onclick="inputPercent()">%</button>
+        <button class="btn btn-op"    onclick="inputOp('/')">÷</button>
+
+        <button class="btn btn-num"   onclick="inputNum('7')">7</button>
+        <button class="btn btn-num"   onclick="inputNum('8')">8</button>
+        <button class="btn btn-num"   onclick="inputNum('9')">9</button>
+        <button class="btn btn-op"    onclick="inputOp('*')">×</button>
+
+        <button class="btn btn-num"   onclick="inputNum('4')">4</button>
+        <button class="btn btn-num"   onclick="inputNum('5')">5</button>
+        <button class="btn btn-num"   onclick="inputNum('6')">6</button>
+        <button class="btn btn-op"    onclick="inputOp('-')">−</button>
+
+        <button class="btn btn-num"   onclick="inputNum('1')">1</button>
+        <button class="btn btn-num"   onclick="inputNum('2')">2</button>
+        <button class="btn btn-num"   onclick="inputNum('3')">3</button>
+        <button class="btn btn-op"    onclick="inputOp('+')">+</button>
+
+        <button class="btn btn-num btn-zero" onclick="inputNum('0')">0</button>
+        <button class="btn btn-num"   onclick="inputDot()">.</button>
+        <button class="btn btn-eq"    onclick="calculate()">=</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- script.js is linked here — this is how HTML connects to JS -->
+  <script src="script.js"></script>
+
+</body>
+</html>

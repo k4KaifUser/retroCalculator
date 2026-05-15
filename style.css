@@ -1,0 +1,214 @@
+/* =============================================
+   style.css — All the visual styling lives here
+   This file is linked in index.html via:
+   <link rel="stylesheet" href="style.css" />
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&display=swap');
+
+/* Reset default browser spacing */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Page background */
+body {
+  background: #1a1408;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Outer wrapper — centers the calculator */
+.calc-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+/* The main calculator body */
+.calculator {
+  background: #c8c0a0;
+  border-radius: 12px 12px 18px 18px;
+  padding: 24px 22px 28px;
+  width: 280px;
+  box-shadow: 4px 4px 0 #6b6040, 8px 8px 0 #3a3020, inset 0 2px 0 #e8e0c0;
+  border: 2px solid #a09060;
+}
+
+/* Brand name at the top */
+.brand {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  color: #6b6040;
+  text-align: right;
+  letter-spacing: 4px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+/* Dark housing around the screen */
+.screen-housing {
+  background: #3a3020;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 18px;
+  border: 2px solid #6b6040;
+  box-shadow: inset 0 2px 6px #1a1008;
+}
+
+/* The green LCD screen */
+.screen {
+  background: #8ba870;
+  border-radius: 3px;
+  padding: 10px 12px 8px;
+  min-height: 58px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.4), 0 0 0 1px #6a8850;
+  position: relative;
+  overflow: hidden;
+}
+
+/* CRT scanline effect on the screen */
+.screen::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0,0,0,0.06) 3px,
+    rgba(0,0,0,0.06) 4px
+  );
+  pointer-events: none;
+}
+
+/* Small expression text (shows history like "12 + ") */
+.screen-expr {
+  font-family: 'VT323', monospace;
+  font-size: 14px;
+  color: #3a5830;
+  min-height: 18px;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+/* Main big number on screen */
+.screen-main {
+  font-family: 'VT323', monospace;
+  font-size: 36px;
+  color: #1a3018;
+  letter-spacing: 2px;
+  line-height: 1;
+  text-shadow: 0 0 6px rgba(26,48,24,0.4);
+}
+
+/* Status bar with LED dot */
+.status-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+/* The blinking red LED dot */
+.led {
+  width: 6px;
+  height: 6px;
+  background: #c83030;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 6px;
+  box-shadow: 0 0 4px #c83030;
+  animation: blink 2s infinite;
+}
+
+/* Blink animation for the LED */
+@keyframes blink {
+  0%, 90%, 100% { opacity: 1; }
+  95%            { opacity: 0.2; }
+}
+
+/* "ON" text beside LED */
+.status-text {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 8px;
+  color: #6b6040;
+  letter-spacing: 2px;
+}
+
+/* Button grid — 4 columns */
+.btn-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+/* All buttons share these base styles */
+.btn {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  padding: 12px 4px;
+  text-align: center;
+  transition: transform 0.07s, box-shadow 0.07s;
+  line-height: 1;
+}
+
+/* Press-down effect when clicked */
+.btn:active {
+  transform: translateY(2px);
+  box-shadow: none !important;
+}
+
+/* Number buttons — cream color */
+.btn-num {
+  background: #e8e0c0;
+  color: #2a2010;
+  box-shadow: 2px 2px 0 #8a8060, 0 2px 0 #6b6040;
+  border: 1px solid #b0a878;
+}
+.btn-num:hover { background: #f0ead0; }
+
+/* Operator buttons — orange */
+.btn-op {
+  background: #d47820;
+  color: #fff8e8;
+  box-shadow: 2px 2px 0 #7a4010, 0 2px 0 #5a3008;
+  border: 1px solid #b06010;
+}
+.btn-op:hover { background: #e08828; }
+
+/* Clear buttons — red */
+.btn-clear {
+  background: #c83030;
+  color: #fff0f0;
+  box-shadow: 2px 2px 0 #701010, 0 2px 0 #500808;
+  border: 1px solid #a02020;
+}
+.btn-clear:hover { background: #d84040; }
+
+/* Equals button — blue, spans 2 columns */
+.btn-eq {
+  background: #385888;
+  color: #e8f0ff;
+  box-shadow: 2px 2px 0 #182840, 0 2px 0 #101828;
+  border: 1px solid #284068;
+  grid-column: span 2;
+}
+.btn-eq:hover { background: #486898; }
+
+/* Zero button spans 2 columns */
+.btn-zero {
+  grid-column: span 2;
+}
